@@ -80,11 +80,7 @@ namespace _DISCORD_
 
             timestamps.SetStart((ulong)NUCLEOR.timestamp_editorStart.ToUnixTimeSeconds());
 
-            if (string.IsNullOrEmpty(application_name))
-                activity.SetName("𝐒 𝐇 𝐈 𝐓 𝐒 𝐓 𝐎 𝐑 𝐌");
-            else
-                activity.SetName(application_name);
-
+            activity.SetName(application_name);
             activity.SetType(ActivityTypes.Playing);
             activity.SetStatusDisplayType(StatusDisplayTypes.Name);
 

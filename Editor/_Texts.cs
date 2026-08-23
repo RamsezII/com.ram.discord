@@ -19,7 +19,11 @@ namespace _DISCORD_
         //----------------------------------------------------------------------------------------------------------
 
         [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(OpenText))]
-        static void OpenText() => Application.OpenURL(SaveTextPath());
+        static void OpenText()
+        {
+            SaveText();
+            Application.OpenURL(SaveTextPath());
+        }
 
         static void SaveText()
         {
@@ -48,10 +52,7 @@ namespace _DISCORD_
                 SaveText();
             }
             else
-            {
-                SaveText();
-                Application.OpenURL(lpath);
-            }
+                OpenText();
         }
     }
 }
