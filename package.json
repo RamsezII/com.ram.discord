@@ -1,0 +1,10 @@
+{
+    "name": "com.ram16.cube",
+    "version": "7.7.7",
+    "displayName": "ram16._CUBE_",
+    "description": "Minecraft type gameplay and level generation.",
+    "author": {
+        "name": "RamsezII",
+        "url": "https://github.com/RamsezII"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "_DISCORD_",
+    "rootNamespace": "_DISCORD_",
+    "references": [
+        "GUID:ec96f6dc48fee4244bcebc247464e471",
+        "GUID:2a84e452762c9634994f1da664544658",
+        "GUID:b86a2c45e07cba7419c757a0a689fd50"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_EDITOR"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
