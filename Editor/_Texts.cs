@@ -44,10 +44,11 @@ namespace _DISCORD_
             }
             else
             {
-                jobj.TryRead(nameof(application_id), ref application_id);
-                jobj.TryRead(nameof(application_name), ref application_name);
-                jobj.TryRead(nameof(show_unityVersion), ref show_unityVersion);
-                jobj.TryRead(nameof(show_unityState), ref show_unityState);
+                jobj.TryRead_out(nameof(application_id), out application_id);
+                jobj.TryRead_out(nameof(application_name), out application_name);
+                jobj.TryRead_out(nameof(show_unityVersion), out show_unityVersion);
+                jobj.TryRead_out(nameof(show_unityState), out show_unityState);
+                SaveText();
             }
         }
     }
