@@ -6,8 +6,5 @@
     "author": {
         "name": "RamsezII",
         "url": "https://github.com/RamsezII"
-    },
-    "dependencies": {
-        "com.discord.partnersdk": "VERSION"
     }
 }
