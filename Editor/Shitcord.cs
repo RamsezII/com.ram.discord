@@ -36,15 +36,13 @@ namespace _DISCORD_
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void OnBeforeSceneLoad()
         {
-            NUCLEOR.delegates.OnApplicationFocus += static () => LoadHText(log: false);
-            NUCLEOR.delegates.OnApplicationUnfocus += static () => SaveHText(log: false);
             StartPresence();
         }
 
         [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(StartPresence))]
         static void StartPresence()
         {
-            LoadRText(log: false);
+            LoadRText();
             if (!activate_presence)
                 return;
 
@@ -78,7 +76,7 @@ namespace _DISCORD_
         [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(UpdatePresence))]
         static void UpdatePresence()
         {
-            LoadRText(log: false);
+            LoadRText();
 
             if (!activate_presence || !is_initialized || client == null)
                 return;
