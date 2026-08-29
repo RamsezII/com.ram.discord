@@ -12,6 +12,7 @@ namespace _DISCORD_
         static Client client;
         static bool is_initialized;
         static PlayModeStateChange playModeState;
+        const string button_prefixe = "Assets/" + nameof(_DISCORD_) + "/";
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -32,13 +33,20 @@ namespace _DISCORD_
             };
         }
 
-        //----------------------------------------------------------------------------------------------------------
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        static void OnBeforeSceneLoad()
+        {
+            NUCLEOR.delegates.OnApplicationFocus += static () => LoadHText(log: false);
+            NUCLEOR.delegates.OnApplicationUnfocus += static () => SaveHText(log: false);
+            StartPresence();
+        }
 
         [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(StartPresence))]
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void StartPresence()
         {
-            LoadText(true);
+            LoadRText(log: false);
+            if (!activate_presence)
+                return;
 
             if (is_initialized)
             {
@@ -70,7 +78,9 @@ namespace _DISCORD_
         [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(UpdatePresence))]
         static void UpdatePresence()
         {
-            if (!is_initialized || client == null)
+            LoadRText(log: false);
+
+            if (!activate_presence || !is_initialized || client == null)
                 return;
 
             Debug.Log($"{typeof(Shitcord)}.UPDATE_PRESENCE");

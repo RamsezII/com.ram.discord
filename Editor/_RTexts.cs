@@ -13,21 +13,21 @@ namespace _DISCORD_
         static bool show_unityVersion;
         static bool show_unityState;
 
-        static string SaveTextPath() => Path.Combine(ArkMachine.DFResources.FullName, typeof(Shitcord).GetJSonFileName());
-        static string LoadTextPath() => typeof(Shitcord).GetJSonFileName_noTXT();
+        static string SaveRTextPath() => Path.Combine(ArkMachine.DFResources.FullName, typeof(Shitcord).GetJSonFileName());
+        static string LoadRTextPath() => typeof(Shitcord).GetJSonFileName_noTXT();
 
         //----------------------------------------------------------------------------------------------------------
 
-        [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(OpenText))]
-        static void OpenText()
+        [MenuItem("Assets/" + nameof(_DISCORD_) + "/" + nameof(OpenRText))]
+        static void OpenRText()
         {
-            SaveText();
-            Application.OpenURL(SaveTextPath());
+            SaveRText();
+            Application.OpenURL(SaveRTextPath());
         }
 
-        static void SaveText()
+        static void SaveRText()
         {
-            string spath = SaveTextPath();
+            string spath = SaveRTextPath();
             JObject jobj = new()
             {
                 [nameof(application_id)] = application_id,
@@ -39,9 +39,9 @@ namespace _DISCORD_
             AssetDatabase.Refresh();
         }
 
-        static void LoadText(in bool log)
+        static void LoadRText(in bool log)
         {
-            string lpath = LoadTextPath();
+            string lpath = LoadRTextPath();
 
             if (lpath.TryNJRead_resource(out JObject jobj, log_success: log))
             {
@@ -49,10 +49,10 @@ namespace _DISCORD_
                 jobj.TryRead_out(nameof(application_name), out application_name);
                 jobj.TryRead_out(nameof(show_unityVersion), out show_unityVersion);
                 jobj.TryRead_out(nameof(show_unityState), out show_unityState);
-                SaveText();
+                SaveRText();
             }
             else
-                OpenText();
+                OpenRText();
         }
     }
 }
