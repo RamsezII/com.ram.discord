@@ -2,6 +2,7 @@
 using _UTIL_;
 using Newtonsoft.Json.Linq;
 using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
@@ -22,7 +23,8 @@ namespace _DISCORD_
         [MenuItem(button_prefixe + nameof(OpenHText))]
         static void OpenHText()
         {
-            SaveHText(log: true);
+            if (!File.Exists(GetHTextPath()))
+                SaveHText(log: true);
             Application.OpenURL(GetHTextPath());
         }
 
