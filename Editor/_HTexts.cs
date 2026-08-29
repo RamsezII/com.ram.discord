@@ -45,7 +45,7 @@ namespace _DISCORD_
         {
             string lpath = GetHTextPath();
 
-            if (lpath.TryNJRead_resource(out JObject jobj, log_success: log))
+            if (Util.TryNJRead(lpath, out JObject jobj, force: true, log_success: log))
             {
                 jobj.ReadFields<HFieldAttribute>(null, typeof(Shitcord));
                 SaveHText(log: false);
