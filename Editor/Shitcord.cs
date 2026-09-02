@@ -7,7 +7,7 @@ using UnityEngine;
 namespace _DISCORD_
 {
     [InitializeOnLoad]
-    static partial class Shitcord
+    partial class Shitcord : ArkComponent1
     {
         static Client client;
         static bool is_initialized;
@@ -36,6 +36,7 @@ namespace _DISCORD_
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void OnBeforeSceneLoad()
         {
+            Util.InstantiateOrCreate<Shitcord>();
             StartPresence();
         }
 

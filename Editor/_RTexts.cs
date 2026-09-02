@@ -1,5 +1,4 @@
 ﻿using _ARK_;
-using _UTIL_;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
@@ -51,8 +50,6 @@ namespace _DISCORD_
                 jobj.ReadFields<RFieldAttribute>(null, typeof(Shitcord));
                 SaveRText();
             }
-            else
-                OpenRText();
         }
     }
 }
