@@ -16,7 +16,7 @@ namespace _DISCORD_
         }
 
         [HField] static bool activate_presence = true;
-        static string GetHTextPath() => ArkMachine.GetHomeJSonPath(typeof(Shitcord));
+        static string GetHTextPath() => NUCLEOR.GetHomeJSonPath(typeof(Shitcord));
 
         //----------------------------------------------------------------------------------------------------------
 

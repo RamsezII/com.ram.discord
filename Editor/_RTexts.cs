@@ -20,7 +20,7 @@ namespace _DISCORD_
         [RField] static bool show_unityVersion;
         [RField] static bool show_unityState;
 
-        static string SaveRTextPath() => Path.Combine(ArkMachine.DFResources.FullName, typeof(Shitcord).GetJSonFileName());
+        static string SaveRTextPath() => Path.Combine(NUCLEOR.DFResources.FullName, typeof(Shitcord).GetJSonFileName());
         static string LoadRTextPath() => typeof(Shitcord).GetJSonFileName_noTXT();
 
         //----------------------------------------------------------------------------------------------------------
