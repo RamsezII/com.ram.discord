@@ -7,7 +7,7 @@ namespace _DISCORD_
 {
     partial class Shitcord : IHomeTexts
     {
-        [NJEdit] static bool activate_presence = true;
+        [NJField] static bool activate_presence = true;
 
         //----------------------------------------------------------------------------------------------------------
 
