@@ -35,7 +35,7 @@ namespace _DISCORD_
         {
             string spath = SaveRTextPath();
             JObject jobj = new();
-            jobj.WriteFields<RFieldAttribute>(null, typeof(Shitcord));
+            jobj.WriteStaticFields<RFieldAttribute>(typeof(Shitcord));
             jobj.NJSave(spath);
             AssetDatabase.Refresh();
         }
