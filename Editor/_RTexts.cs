@@ -47,7 +47,7 @@ namespace _DISCORD_
 
             if (lpath.TryNJRead_resource(out JObject jobj))
             {
-                jobj.ReadFields<RFieldAttribute>(null, typeof(Shitcord));
+                jobj.ReadStaticFields<RFieldAttribute>(typeof(Shitcord));
                 SaveRText();
             }
         }
