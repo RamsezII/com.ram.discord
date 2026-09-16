@@ -1,13 +1,12 @@
 ﻿using _ARK_;
-using _UTIL_;
 using UnityEditor;
 using UnityEngine;
 
 namespace _DISCORD_
 {
-    partial class Shitcord : IHomeTexts
+    partial class Shitcord
     {
-        [NJField] static bool activate_presence = true;
+        [HField] static bool activate_presence = true;
 
         //----------------------------------------------------------------------------------------------------------
 

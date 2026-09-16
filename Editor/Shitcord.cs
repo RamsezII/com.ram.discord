@@ -7,7 +7,7 @@ using UnityEngine;
 namespace _DISCORD_
 {
     [InitializeOnLoad]
-    partial class Shitcord : ArkComponent1
+    partial class Shitcord : ArkComponent2
     {
         static Client client;
         static bool is_initialized;
