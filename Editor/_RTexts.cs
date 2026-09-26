@@ -1,7 +1,7 @@
 ﻿using _ARK_;
 using Newtonsoft.Json.Linq;
-using System;
 using System.IO;
+using Unity.Scripting.LifecycleManagement;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,15 +9,10 @@ namespace _DISCORD_
 {
     partial class Shitcord
     {
-        [AttributeUsage(AttributeTargets.Field)]
-        sealed class RFieldAttribute : Attribute
-        {
-        }
-
-        [RField] static ulong application_id;
-        [RField] static string application_name;
-        [RField] static bool show_unityVersion;
-        [RField] static bool show_unityState;
+        [AutoStaticsCleanup, RField] static ulong application_id;
+        [AutoStaticsCleanup, RField] static string application_name;
+        [AutoStaticsCleanup, RField] static bool show_unityVersion;
+        [AutoStaticsCleanup, RField] static bool show_unityState;
 
         static string SaveRTextPath() => Path.Combine(NUCLEOR.DFResources.FullName, typeof(Shitcord).GetJSonFileName());
         static string LoadRTextPath() => typeof(Shitcord).GetJSonFileName_noTXT();

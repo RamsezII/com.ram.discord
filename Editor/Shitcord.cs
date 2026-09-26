@@ -1,6 +1,7 @@
 ﻿using System;
 using _ARK_;
 using Discord.Sdk;
+using Unity.Scripting.LifecycleManagement;
 using UnityEditor;
 using UnityEngine;
 
@@ -9,9 +10,9 @@ namespace _DISCORD_
     [InitializeOnLoad]
     partial class Shitcord : ArkComponent2
     {
-        static Client client;
-        static bool is_initialized;
-        static PlayModeStateChange playModeState;
+        [AutoStaticsCleanup] static Client client;
+        [AutoStaticsCleanup] static bool is_initialized;
+        [AutoStaticsCleanup] static PlayModeStateChange playModeState;
         const string button_prefixe = "Assets/" + nameof(_DISCORD_) + "/";
 
         //----------------------------------------------------------------------------------------------------------
