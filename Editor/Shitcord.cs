@@ -10,7 +10,7 @@ namespace _DISCORD_
     [InitializeOnLoad]
     partial class Shitcord : ArkComponent2
     {
-        [AutoStaticsCleanup] static Client client;
+        [NoAutoStaticsCleanup] static Client client;
         [AutoStaticsCleanup] static bool is_initialized;
         [AutoStaticsCleanup] static PlayModeStateChange playModeState;
         const string button_prefixe = "Assets/" + nameof(_DISCORD_) + "/";
