@@ -1,4 +1,5 @@
 ﻿using _ARK_;
+using Unity.Scripting.LifecycleManagement;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace _DISCORD_
 {
     partial class Shitcord
     {
-        [HField] static bool activate_presence = true;
+        [AutoStaticsCleanup, HField] static bool activate_presence;
 
         //----------------------------------------------------------------------------------------------------------
 
