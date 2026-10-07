@@ -405,15 +405,24 @@ public static unsafe class NativeMethods {
 
     public delegate void Discord_FreeFn(void* ptr);
 
+#if UNITY_6000_5_OR_NEWER
+    [Unity.Scripting.LifecycleManagement.NoAutoStaticsCleanup]
+#endif
     internal class ManagedUserData {
         public Delegate managedCallback;
+
+        // Native code retains these callbacks after the P/Invoke call returns.
+        static readonly Discord_FreeFn freeCallback = UnmanagedFree;
+        internal static readonly Client.OnStatusChanged StatusChangedCallback = Client.OnStatusChanged_Handler;
+        internal static readonly Client.UpdateRichPresenceCallback RichPresenceUpdatedCallback = Client.UpdateRichPresenceCallback_Handler;
+        internal static readonly Client.GetDiscordClientConnectedUserCallback ConnectedUserCallback = Client.GetDiscordClientConnectedUserCallback_Handler;
 
         public static void* Free;
 
         public ManagedUserData(Delegate managedCallback) { this.managedCallback = managedCallback; }
 
         static ManagedUserData() {
-            Free = (void*)Marshal.GetFunctionPointerForDelegate<Discord_FreeFn>(UnmanagedFree);
+            Free = (void*)Marshal.GetFunctionPointerForDelegate(freeCallback);
         }
 
         [AOT.MonoPInvokeCallback(typeof(Discord_FreeFn))]
@@ -13920,7 +13929,7 @@ public class Client : IDisposable {
         }
         unsafe {
             Discord.Sdk.NativeMethods.Client.OnStatusChanged __cbDelegate =
-              Discord.Sdk.NativeMethods.Client.OnStatusChanged_Handler;
+              NativeMethods.ManagedUserData.StatusChangedCallback;
             fixed(NativeMethods.Client* self = &this.self) {
                 NativeMethods.Client.SetStatusChangedCallback(
                   self,
@@ -14871,7 +14880,7 @@ public class Client : IDisposable {
         unsafe {
             fixed(NativeMethods.Activity* __activityFixed = &activity.self) {
                 Discord.Sdk.NativeMethods.Client.UpdateRichPresenceCallback __cbDelegate =
-                  Discord.Sdk.NativeMethods.Client.UpdateRichPresenceCallback_Handler;
+                  NativeMethods.ManagedUserData.RichPresenceUpdatedCallback;
                 fixed(NativeMethods.Client* self = &this.self) {
                     NativeMethods.Client.UpdateRichPresence(
                       self,
@@ -15491,7 +15500,7 @@ public class Client : IDisposable {
         unsafe {
             Discord.Sdk.NativeMethods.Client
               .GetDiscordClientConnectedUserCallback __callbackDelegate =
-              Discord.Sdk.NativeMethods.Client.GetDiscordClientConnectedUserCallback_Handler;
+              NativeMethods.ManagedUserData.ConnectedUserCallback;
             fixed(NativeMethods.Client* self = &this.self) {
                 NativeMethods.Client.GetDiscordClientConnectedUser(
                   self,

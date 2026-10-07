@@ -11,7 +11,7 @@ namespace _DISCORD_
     partial class Shitcord : ArkComponent2
     {
         [NoAutoStaticsCleanup] static Client client;
-        [AutoStaticsCleanup] static bool is_initialized;
+        [NoAutoStaticsCleanup] static bool is_initialized;
         [AutoStaticsCleanup] static PlayModeStateChange playModeState;
         const string button_prefixe = "Assets/" + nameof(_DISCORD_) + "/";
 
