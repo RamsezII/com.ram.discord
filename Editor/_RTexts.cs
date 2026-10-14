@@ -9,13 +9,12 @@ namespace _DISCORD_
 {
     partial class Shitcord
     {
-        [AutoStaticsCleanup, RField] static ulong application_id;
-        [AutoStaticsCleanup, RField] static string application_name;
-        [AutoStaticsCleanup, RField] static bool show_unityVersion;
-        [AutoStaticsCleanup, RField] static bool show_unityState;
+        [NoAutoStaticsCleanup, RField] static ulong application_id;
+        [NoAutoStaticsCleanup, RField] static string application_name;
+        [NoAutoStaticsCleanup, RField] static bool show_unityVersion;
+        [NoAutoStaticsCleanup, RField] static bool show_unityState;
 
-        static string SaveRTextPath() => Path.Combine(NUCLEOR.DFResources.FullName, typeof(Shitcord).GetJSonFileName());
-        static string LoadRTextPath() => typeof(Shitcord).GetJSonFileName_noTXT();
+        static string SaveRTextPath() => Path.Combine(Application.dataPath, NUCLEOR.dname_resources, typeof(Shitcord).GetJSonFileName());
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -36,15 +35,17 @@ namespace _DISCORD_
         }
 
         [MenuItem(button_prefixe + nameof(LoadRText))]
-        static void LoadRText()
-        {
-            string lpath = LoadRTextPath();
+        static void LoadRText() => TryLoadRText();
 
-            if (lpath.TryNJRead_resource(out JObject jobj))
-            {
-                jobj.ReadStaticFields<RFieldAttribute>(typeof(Shitcord));
-                SaveRText();
-            }
+        static bool TryLoadRText()
+        {
+            string path = SaveRTextPath();
+
+            if (!path.TryNJRead(out JObject jobj, log_success: false))
+                return false;
+
+            jobj.ReadStaticFields<RFieldAttribute>(typeof(Shitcord));
+            return true;
         }
     }
 }
